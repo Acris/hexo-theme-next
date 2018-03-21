@@ -137,3 +137,7 @@
   {% set custom_head = '../../_custom/head.swig' %}
 {% endif %}
 {% include custom_head %}
+
+{% if is_post() && config.generator_amp %}
+  <link rel="amphtml" href="./amp/index.html">
+{% endif %}

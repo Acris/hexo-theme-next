@@ -42,3 +42,19 @@ if hexo-config('footer.icon.animated') {
 
   img { display: inline-block; }
 }
+
+.acris-blog-footer {
+  +mobile() {
+    display: none;
+  }
+}
+
+.acris-blog-footer a {
+  border: none;
+}
+
+.acris-blog-footer img {
+  vertical-align: middle;
+  display: inline-block;
+  height: 20px;
+}

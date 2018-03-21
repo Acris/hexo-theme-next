@@ -2,7 +2,7 @@
 #}{% set current = date(Date.now(), "YYYY") %}{#
 #}&copy; {% if theme.footer.since and theme.footer.since != current %}{{ theme.footer.since }} &mdash; {% endif %}{#
 #}<span itemprop="copyrightYear">{{ current }}</span>
-  <span class="with-love" id="animate"> 
+  <span class="with-love" id="animate">
     <i class="fa fa-{{ theme.footer.icon.name }}"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">{{ theme.footer.copyright || config.author }}</span>
@@ -62,3 +62,16 @@
   #}{{ theme.footer.custom_text }}{#
 #}</div>
 {% endif %}
+
+<div class="acris-blog-footer">
+  <span>
+    Powered by
+    <a href="https://console.upyun.com/register/?invite=HyBuD3DXM" title="又拍云" target="_blank">
+      <img src="//cdn.reorz.com/images/2017/02/upyun_logo.png" alt="UPYUN">
+    </a>
+    and
+    <a href="https://www.vultr.com/?ref=6821762" title="Vultr" target="_blank">
+      <img src="//cdn.reorz.com/images/2017/02/vultr_logo.png" alt="Vultr">
+    </a>
+  </span>
+</div>
