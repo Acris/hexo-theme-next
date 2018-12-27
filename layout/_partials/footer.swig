@@ -63,7 +63,6 @@
 
 <div class="acris-blog-footer">
   <span>
-    Powered by
     <a href="https://console.upyun.com/register/?invite=HyBuD3DXM" title="又拍云" target="_blank">
       <img src="//cdn.reorz.com/images/2017/02/upyun_logo.png" alt="UPYUN">
     </a>
