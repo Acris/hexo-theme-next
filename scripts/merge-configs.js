@@ -2,7 +2,7 @@
 
 'use strict';
 
-var merge = require('./merge');
+var merge = require('lodash/merge');
 
 hexo.on('generateBefore', function() {
   if (hexo.locals.get) {
@@ -42,4 +42,8 @@ hexo.on('generateBefore', function() {
       }
     }
   }
+
+  // Add filter type `theme_inject`
+  require('./injects')(hexo);
+
 });

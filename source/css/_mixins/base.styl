@@ -82,12 +82,12 @@ random-color($min, $max) {
 
 // Clearfix. http://nicolasgallagher.com/micro-clearfix-hack/
 clearfix() {
-  &:before,
-  &:after {
+  &::before,
+  &::after {
     content: " ";
     display: table;
   }
-  &:after { clear: both; }
+  &::after { clear: both; }
 }
 
 word-wrap() {
@@ -102,4 +102,11 @@ disable-touch-hover() {
       background: none;
     }
   }
+}
+
+disable-user-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

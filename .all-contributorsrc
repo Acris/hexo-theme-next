@@ -4,7 +4,7 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "files": [
-    "README.md"
+    "docs/AUTHORS.md"
   ],
   "imageSize": 100,
   "commit": true,
@@ -135,8 +135,7 @@
         "code",
         "doc",
         "review",
-        "test",
-        "projectManagement"
+        "test"
       ]
     },
     {
@@ -447,6 +446,15 @@
       "contributions": [
         "bug",
         "code"
+      ]
+    },
+    {
+      "login": "howiezhao",
+      "name": "Howie Zhao",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/16129206?v=4",
+      "profile": "http://www.howiezhao.com",
+      "contributions": [
+        "doc"
       ]
     }
   ],

@@ -18,6 +18,9 @@
 <head>
   {{ partial('_partials/head/head.swig', {}, {cache: theme.cache.enable}) }}
   {% include '_partials/head/head-unique.swig' %}
+  {% for inject_item in theme.injects.head %}
+    {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
+  {% endfor %}
   <title>{% block title %}{% endblock %}</title>
   {% include '_third-party/analytics/index.swig' %}
   {{ partial('_scripts/noscript.swig', {}, {cache: theme.cache.enable}) }}
@@ -81,17 +84,8 @@
       </div>
     {% endif %}
 
-    {% if theme.baidushare and theme.baidushare.type === "slide" %}
-      <div>
-        {% include '_partials/share/baidushare.swig' %}
-      </div>
-    {% endif %}
-
-    {% if theme.add_this_id %}
-      <div>
-        {% include '_partials/share/add-this.swig' %}
-      </div>
-    {% endif %}
+    {% include '_partials/share/needsharebutton.swig' %}
+    {% include '_partials/share/add-this.swig' %}
   </div>
 
   {% include '_scripts/vendors.swig' %}
@@ -105,22 +99,13 @@
   {% include '_scripts/next-boot.swig' %}
   {% include '_scripts/scroll-cookie.swig' %}
   {% include '_scripts/exturl.swig' %}
-  {% include '_third-party/quicklink.swig' %}
-  {% include '_third-party/comments/index.swig' %}
-  {% include '_third-party/search/index.swig' %}
-  {% include '_third-party/analytics/lean-analytics.swig' %}
-  {% include '_third-party/analytics/firestore.swig' %}
-  {% include '_third-party/math/index.swig' %}
-  {% include '_third-party/pdf.swig' %}
-  {% include '_third-party/mermaid.swig' %}
-  {% include '_third-party/baidu-push.swig' %}
-  {% include '_third-party/schedule.swig' %}
-  {% include '_third-party/needsharebutton.swig' %}
-  {% include '_third-party/rating.swig' %}
-  {% include '_third-party/pangu.swig' %}
-  {% include '_third-party/bookmark.swig' %}
-  {% include '_third-party/copy-code.swig' %}
-  {% include '_third-party/chatra.swig' %}
-  {% include '_third-party/tidio.swig' %}
+  {% include '_scripts/three.swig' %}
+
+  {% include '_third-party/index.swig' %}
+
+  {% for inject_item in theme.injects.bodyEnd %}
+    {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
+  {% endfor %}
+
 </body>
 </html>

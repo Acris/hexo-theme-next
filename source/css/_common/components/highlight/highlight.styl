@@ -1,14 +1,15 @@
 // https://github.com/chriskempson/tomorrow-theme
 
-@require "theme"
-@require "diff"
+$highlight_theme = hexo-config("codeblock.highlight_theme");
+
+@import "theme";
+@import "diff";
+@import "copy-code" if hexo-config("codeblock.copy_button.enable");
 
 // Placeholder: $code-block
 $code-block {
-  overflow: auto;
   margin: 20px 0;
-  padding: 0;
-  font-size $code-font-size;
+  font-size: $code-font-size;
   color: $highlight-foreground;
   background: $highlight-background;
   line-height: $line-height-code-block;
@@ -27,6 +28,7 @@ code {
 
 pre {
   @extend $code-block;
+  overflow: auto;
   padding: 10px;
   code {
     padding: 0;
@@ -38,9 +40,10 @@ pre {
 
 .highlight {
   @extend $code-block;
-  // Read values from NexT config and set they as local variables to use as string variables (in any CSS section).
-  hexo-config('codeblock.border_radius') is a 'unit' ? (cbradius = unit(hexo-config('codeblock.border_radius'), px)) : (cbradius = 1px)
-  border-radius: cbradius;
+
+  *::selection {
+    background: $highlight-selection;
+  }
 
   pre {
     border: none;
@@ -64,7 +67,6 @@ pre {
     font-size: 1em;
     color: $highlight-foreground;
     line-height: 1em;
-    margin-bottom: 1em;
     margin: 0em;
     padding: 0.5em;
     background: $code-background;
@@ -89,7 +91,6 @@ pre {
   .code pre {
     width: 100%
     padding-left: 10px
-    padding-right: 10px
     background-color: $highlight-background
   }
 
@@ -97,10 +98,7 @@ pre {
 }
 
 .gutter {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  disable-user-select();
 }
 
 .gist table {
@@ -109,14 +107,24 @@ pre {
   td { border: none; }
 }
 
-// For diff highlight
-pre .deletion { background: $highlight-deletion; }
-pre .addition { background: $highlight-addition; }
-pre .meta     { color: $highlight-purple; }
-
 pre {
+  // For diff highlight
+  .deletion {
+    background: $highlight-deletion;
+  }
 
-  .comment { color: $highlight-comment; }
+  .addition {
+    background: $highlight-addition;
+  }
+
+  .meta {
+    color: $highlight-yellow;
+    disable-user-select();
+  }
+
+  .comment {
+    color: $highlight-comment;
+  }
 
   .variable
   .attribute
