@@ -10,7 +10,7 @@
       var url = visitors.getAttribute('id').trim();
       var title = visitors.getAttribute('data-flag-title').trim();
 
-      Counter('get', `/classes/Counter?${JSON.stringify({ where: url })}`)
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
         .then(response => response.json())
         .then(({ results }) => {
           if (results.length > 0) {
@@ -100,7 +100,7 @@
       };
       if (CONFIG.page.isPost) {
         const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
-        //if (localhost.test(document.URL)) return;
+        if (localhost.test(document.URL)) return;
         addCount(Counter);
       } else if (document.querySelectorAll('.post-title-link').length >= 1) {
         showTime(Counter);
