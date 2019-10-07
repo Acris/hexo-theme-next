@@ -4,7 +4,6 @@
 
 const path = require('path');
 const {iconText} = require('./common');
-const priority = hexo.config.inject_priority || {};
 
 // Add comment
 hexo.extend.filter.register('theme_inject', injects => {
@@ -19,7 +18,7 @@ hexo.extend.filter.register('theme_inject', injects => {
 
   injects.bodyEnd.file('changyan', path.join(hexo.theme_dir, 'layout/_third-party/comments/changyan.swig'));
 
-}, priority.changyan);
+});
 
 // Add post_meta
 hexo.extend.filter.register('theme_inject', injects => {
@@ -31,16 +30,16 @@ hexo.extend.filter.register('theme_inject', injects => {
   <span class="post-meta-item">
     ${iconText('comment-o', 'changyan')}
     {% if is_post() %}
-      <a title="changyan" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentCount"></span>
-      </a>
+      <a title="changyan" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">{#
+        #}<span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="{{ post.path }}" itemprop="commentCount"></span>{#
+      #}</a>
     {% else %}
-      <a title="changyan" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">
-        <span id="url::{{ post.permalink }}" class="cy_cmt_count" data-xid="{{ post.path }}" itemprop="commentCount"></span>
-      </a>
+      <a title="changyan" href="{{ url_for(post.path) }}#SOHUCS" itemprop="discussionUrl">{#
+        #}<span id="url::{{ post.permalink }}" class="cy_cmt_count" data-xid="{{ post.path }}" itemprop="commentCount"></span>{#
+      #}</a>
     {% endif %}
   </span>
   {% endif %}
-  `);
+  `, {}, {}, theme.changyan.post_meta_order);
 
-}, priority.changyan_post_meta);
+});

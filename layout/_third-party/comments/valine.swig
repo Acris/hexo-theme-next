@@ -5,7 +5,7 @@ NexT.utils.getScript('{{ valine_uri }}', () => {
   var GUEST = ['nick', 'mail', 'link'];
   var guest = '{{ theme.valine.guest_info }}';
   guest = guest.split(',').filter(item => {
-    return GUEST.indexOf(item) > -1;
+    return GUEST.includes(item);
   });
   new Valine({
     el: '#comments',
@@ -19,7 +19,9 @@ NexT.utils.getScript('{{ valine_uri }}', () => {
     pageSize: '{{ theme.valine.pageSize }}' || 10,
     visitor: {{ theme.valine.visitor }},
     lang: '{{ theme.valine.language }}' || 'zh-cn',
-    path: location.pathname
+    path: location.pathname,
+    recordIP: {{ theme.valine.recordIP }},
+    serverURLs: '{{ theme.valine.serverURLs }}'
   });
 }, window.Valine);
 </script>

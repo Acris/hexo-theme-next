@@ -1,11 +1,11 @@
 {{ partial('_partials/header/brand.swig', {}, {cache: theme.cache.enable}) }}
 
-{%- set hasSearch = theme.algolia_search.enable || theme.local_search.enable %}
+{%- set hasSearch = theme.algolia_search.enable or theme.local_search.enable %}
 
 <nav class="site-nav">
   {{ partial('_partials/header/menu.swig', {}, {cache: theme.cache.enable}) }}
 
-  {%- if theme.scheme === 'Muse' || theme.scheme === 'Mist' %}
+  {%- if theme.scheme === 'Muse' or theme.scheme === 'Mist' %}
     {% include 'sub-menu.swig' %}
   {%- endif %}
 </nav>
@@ -16,6 +16,4 @@
   </div>
 {%- endif %}
 
-{%- for inject_item in theme.injects.header %}
-  {{ partial(inject_item.layout, inject_item.locals, inject_item.options) }}
-{%- endfor %}
+{{- next_inject('header') }}
