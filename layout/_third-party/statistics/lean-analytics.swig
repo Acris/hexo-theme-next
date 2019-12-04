@@ -1,5 +1,4 @@
 {%- if theme.leancloud_visitors.enable and not theme.valine.visitor %}
-  {# custom analytics part create by xiamo; edited by LEAFERx #}
   <script{{ pjax }}>
   function leancloudSelector(url) {
     return document.getElementById(url).querySelector('.leancloud-visitors-count');
@@ -64,14 +63,11 @@
             });
             return;
           }
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
+          for (let item of results) {
+            let { url, time } = item;
             leancloudSelector(url).innerText = time;
           }
-          for (var i = 0; i < entries.length; i++) {
-            var url = entries[i];
+          for (let url of entries) {
             var element = leancloudSelector(url);
             if (element.innerText == '') {
               element.innerText = 0;
@@ -99,8 +95,7 @@
         });
       };
       if (CONFIG.page.isPost) {
-        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
-        if (localhost.test(document.URL)) return;
+        if (CONFIG.hostname !== location.hostname) return;
         addCount(Counter);
       } else if (document.querySelectorAll('.post-title-link').length >= 1) {
         showTime(Counter);
